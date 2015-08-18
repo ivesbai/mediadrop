@@ -331,8 +331,21 @@ def make_app(global_conf, full_stack=True, static_files=True, **app_conf):
     # CUSTOM MIDDLEWARE HERE (filtered by error handling middlewares)
 
     # add repoze.who middleware with our own authorization library
-    app = add_auth(app, config)
-
+    
+    ## By ivesbai 2015-08-18
+    ## we make repo.who created from a config file if it exists
+    ## so we can integrate other authenticate method into mediadrop
+    #app = add_auth(app, config)
+    import os.path
+    if os.path.isfile(os.path.join(global_conf['here'], 'who.ini')):
+        from mediadrop.lib.auth.middleware import AuthorizationMiddleware
+        app = AuthorizationMiddleware(app, config)
+        from repoze.who.config import make_middleware_with_config
+        app = make_middleware_with_config(app, global_conf, os.path.join(global_conf['here'], 'who.ini'), log_file=os.path.join(global_conf['here'], 'who.log'))
+    else:
+        app = add_auth(app, config)
+    ## end ivesbai 2015-08-18
+    
     # ToscaWidgets Middleware
     app = setup_tw_middleware(app, config)
 

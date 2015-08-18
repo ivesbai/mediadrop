@@ -30,6 +30,15 @@ class CategoriesController(BaseController):
 
     """
 
+    """
+    Add view permission check
+    
+    So that we can control anonymous access in admin panel
+     
+    By ivesbai 2015-08-18
+    """
+    allow_only = has_permission('view')
+    
     def __before__(self, *args, **kwargs):
         """Load all our category data before each request."""
         BaseController.__before__(self, *args, **kwargs)

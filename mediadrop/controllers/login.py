@@ -49,24 +49,28 @@ class LoginController(BaseController):
         )
 
     @expose()
-    def login_handler(self):
+    @observable(events.LoginController.login_handler) # make it plugable, by ivesbai 2015-08-18
+    def login_handler(self, came_from=None, **kwargs):
         """This is a dummy method.
 
         Without a dummy method, Routes will throw a NotImplemented exception.
         Calls that would route to this method are intercepted by
         repoze.who, as defined in mediadrop.lib.auth
         """
-        pass
+        #pass
+        return kwargs
 
     @expose()
-    def logout_handler(self):
+    @observable(events.LoginController.logout_handler) # make it plugable, by ivesbai 2015-08-18
+    def logout_handler(self, came_from=None, **kwargs):
         """This is a dummy method.
 
         Without a dummy method, Routes will throw a NotImplemented exception.
         Calls that would route to this method are intercepted by
         repoze.who, as defined in mediadrop.lib.auth
         """
-        pass
+        #pass
+        return kwargs
 
     @expose()
     @observable(events.LoginController.post_login)

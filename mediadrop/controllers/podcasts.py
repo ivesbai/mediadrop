@@ -29,6 +29,15 @@ class PodcastsController(BaseController):
     regular media by :mod:`mediadrop.controllers.media`.
     """
 
+    """
+    Add view permission check
+    
+    So that we can control anonymous access in admin panel
+     
+    By ivesbai 2015-08-18
+    """
+    allow_only = has_permission('view')
+    
     @expose('podcasts/index.html')
     @observable(events.PodcastsController.index)
     def index(self, **kwargs):

@@ -33,6 +33,15 @@ class UploadController(BaseController):
     Media Upload Controller
     """
 
+    """
+    Add view permission check
+    
+    So that we can control anonymous access in admin panel
+     
+    By ivesbai 2015-08-18
+    """
+    allow_only = has_permission('view')
+    
     def __before__(self, *args, **kwargs):
         if not request.settings['appearance_enable_user_uploads']:
             abort(404)

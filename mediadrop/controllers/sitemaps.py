@@ -38,6 +38,15 @@ class SitemapsController(BaseController):
     Sitemap generation
     """
 
+    """
+    Add view permission check
+    
+    So that we can control anonymous access in admin panel
+     
+    By ivesbai 2015-08-18
+    """
+    allow_only = has_permission('view')
+    
     @validate(validators={
         'page': validators.Int(if_empty=None, if_missing=None, if_invalid=None), 
         'limit': validators.Int(if_empty=10000, if_missing=10000, if_invalid=10000)

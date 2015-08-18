@@ -44,6 +44,15 @@ class MediaController(BaseController):
     Media actions -- for both regular and podcast media
     """
 
+    """
+    Add view permission check
+    
+    So that we can control anonymous access in admin panel
+     
+    By ivesbai 2015-08-18
+    """
+    allow_only = has_permission('view')
+    
     @expose('media/index.html')
     @paginate('media', items_per_page=10)
     @observable(events.MediaController.index)
