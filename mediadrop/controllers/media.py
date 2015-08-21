@@ -20,6 +20,7 @@ from sqlalchemy import orm, sql
 from sqlalchemy.exc import OperationalError
 from webob.exc import HTTPNotAcceptable, HTTPNotFound
 
+from mediadrop.lib.auth import has_permission
 from mediadrop import USER_AGENT
 from mediadrop.forms.comments import PostCommentSchema
 from mediadrop.lib import helpers

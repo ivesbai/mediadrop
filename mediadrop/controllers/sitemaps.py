@@ -18,6 +18,7 @@ from pylons import config, request, response
 from pylons.controllers.util import abort, forward
 from webob.exc import HTTPNotFound
 
+from mediadrop.lib.auth import has_permission
 from mediadrop.plugin import events
 from mediadrop.lib.base import BaseController
 from mediadrop.lib.decorators import expose, beaker_cache, observable, validate

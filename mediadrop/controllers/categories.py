@@ -9,6 +9,7 @@ from pylons import request, response, tmpl_context as c
 from pylons.controllers.util import abort
 from sqlalchemy import orm
 
+from mediadrop.lib.auth import has_permission
 from mediadrop.lib.base import BaseController
 from mediadrop.lib.decorators import (beaker_cache, expose, observable, 
     paginate, validate)

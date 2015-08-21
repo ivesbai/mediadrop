@@ -8,6 +8,7 @@
 from pylons import request, response
 from sqlalchemy import orm
 
+from mediadrop.lib.auth import has_permission
 from mediadrop.lib.auth.util import viewable_media
 from mediadrop.lib import helpers
 from mediadrop.lib.base import BaseController

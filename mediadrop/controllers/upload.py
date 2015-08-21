@@ -10,6 +10,7 @@ import simplejson as json
 from pylons import request, tmpl_context
 from pylons.controllers.util import abort
 
+from mediadrop.lib.auth import has_permission
 from mediadrop.forms.uploader import UploadForm
 from mediadrop.lib import email
 from mediadrop.lib.base import BaseController
